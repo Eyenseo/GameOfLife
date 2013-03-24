@@ -37,22 +37,11 @@ public class GameOfLife {
 			}
 		}
 	}
-	
-	void some(){
-		system.out.println("kno");
-	}
-
-	void test(boolean at) {
-		if(at) {
-			System.out.print("this");
-		}
-	}
 
 	boolean isCorrectOption(char input, char[] options) { // Cheks if the Input is equal to one element of the array
 		for(char o : options) {
-			if(o == input) {
+			if(o == input) 
 				return true;
-			}
 		}
 		return false;
 	}
