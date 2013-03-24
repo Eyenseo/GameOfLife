@@ -1,19 +1,16 @@
 package original;
 
 public class GameOfLife {
-	private final char[] CHOICES = {'\0', 'e', 'a', 'r', 'h', 't'}; // Available options in the Main menu
-	private final char ALIVE = (char) 254; // Char for a Cell that's alive
-	private final char DEAD = ' '; // Char for a Cell that's dead bls bls bla
-	private final int SIZE = 65; // Size of the quadratic world/grid
-	private final String OPTIONS =	"\nIhre Optionen:\n" // Text of the main menu
-									+ "Enter\tNaechter Zueklus\n"
-									+ "t\tZyklen vor springen\n"
-									+ "e\tProgramm beenden\n"
-									+ "a\tNeue Zelle\n"
-									+ "r\tZelle entfernen\n"
-									+ "h\tFuer diese Hilfe";
-	private final String HELP =	"Zur hilfe mit 'h'."; // Text for the help
-	private char[][] grid = new char[SIZE][SIZE]; // Array that represents the world
+	private final char[]   CHOICES = {'\0', 'e', 'a', 'r', 'h', 't'}; // Available options in the Main menu
+	private final char     ALIVE   = (char) 254; // Char for a Cell that's alive
+	private final char     DEAD    = ' '; // Char for a Cell that's dead
+	private final int      SIZE    = 65; // Size of the quadratic world/grid
+	private final String   OPTIONS = "\nIhre Optionen:\n" // Text of the main menu
+	                                 + "Enter\tNaechter Zueklus\n" + "t\tZyklen vor springen\n"
+	                                 + "e\tProgramm beenden\n" + "a\tNeue Zelle\n" + "r\tZelle entfernen\n"
+	                                 + "h\tFuer diese Hilfe";
+	private final String   HELP    = "Zur hilfe mit 'h'."; // Text for the help
+	private       char[][] grid    = new char[SIZE][SIZE]; // Array that represents the world
 
 	private GameOfLife() {
 		for(int i = 0; i < SIZE; i++) {					// Chreates the border of the wold
@@ -36,8 +33,8 @@ public class GameOfLife {
 
 	boolean isCorrectOption(char input, char[] options) { // Cheks if the Input is equal to one element of the array
 		for(char o : options) {
-			if( o == input) {
-				return true;
+			if(o == input) {
+				return !true;
 			}
 		}
 		return false;
