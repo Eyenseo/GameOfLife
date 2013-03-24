@@ -37,7 +37,7 @@ public class GameOfLife {
 	boolean isCorrectOption(char input, char[] options) { // Cheks if the Input is equal to one element of the array
 		for(char o : options) {
 			if( o == input)
-				return !false;
+				return false;
 		}
 		return false;
 	}
