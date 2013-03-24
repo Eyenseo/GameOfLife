@@ -38,10 +38,41 @@ public class GameOfLife {
 		}
 	}
 
+	public static void main(String[] args) {
+		GameOfLife gol = new GameOfLife();
+		char input = '\0';
+		IO.println(gol.OPTIONS + "\n\nWeiter mit Enter!");
+		IO.readChar();
+		do {
+			switch(input) {
+				case '\0':
+					gol.nextCycle();
+					break;
+				case 't':
+					gol.jumpCycle();
+					break;
+				case 'a':
+					gol.addCell();
+					break;
+				case 'r':
+					gol.deleteCell();
+					break;
+				case 'h':
+					IO.println(gol.OPTIONS);
+			}
+			if(input != 'h') {
+				gol.showGrid();
+			}
+			IO.println("Was wollen Sie tun?");
+			input = gol.getOptionInput();
+		} while(input != 'e');
+	}
+
 	boolean isCorrectOption(char input, char[] options) { // Cheks if the Input is equal to one element of the array
 		for(char o : options) {
-			if(o == input) 
+			if(o == input) {
 				return true;
+			}
 		}
 		return false;
 	}
@@ -163,35 +194,5 @@ public class GameOfLife {
 			input = IO.readInt();
 		} while(!isNumber(input) && input > 0);
 		nextCycle(input);
-	}
-
-	public static void main(String[] args) {
-		GameOfLife gol = new GameOfLife();
-		char input = '\0';
-		IO.println(gol.OPTIONS + "\n\nWeiter mit Enter!");
-		IO.readChar();
-		do {
-			switch(input) {
-				case '\0':
-					gol.nextCycle();
-					break;
-				case 't':
-					gol.jumpCycle();
-					break;
-				case 'a':
-					gol.addCell();
-					break;
-				case 'r':
-					gol.deleteCell();
-					break;
-				case 'h':
-					IO.println(gol.OPTIONS);
-			}
-			if(input != 'h') {
-				gol.showGrid();
-			}
-			IO.println("Was wollen Sie tun?");
-			input = gol.getOptionInput();
-		} while(input != 'e');
 	}
 }
