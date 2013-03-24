@@ -13,20 +13,27 @@ public class GameOfLife {
 	private       char[][] grid    = new char[SIZE][SIZE]; // Array that represents the world
 
 	private GameOfLife() {
-		for(int i = 0; i < SIZE; i++) {					// Chreates the border of the wold
-			grid[i][0] = (char) 186; 					// left
-			grid[i][SIZE - 1] = (char) 186; 			// right
-			for(int j = 0; j < SIZE; j++){
-				if(i == 0 || i == SIZE - 1) 			// top and bottom
+		for(int i = 0; i < SIZE; i++) {                    // Chreates the border of the wold
+			grid[i][0] = (char) 186;                     // left
+			grid[i][SIZE - 1] = (char) 186;             // right
+			for(int j = 0; j < SIZE; j++) {
+				if(i == 0 || i == SIZE - 1)             // top and bottom
+				{
 					grid[i][j] = (char) 205;
-				if(i == 0 && j == 0) 					// top left hand corner
+				}
+				if(i == 0 && j == 0)                     // top left hand corner
+				{
 					grid[i][j] = (char) 201;
-				else if(i == 0 && j == SIZE - 1) 		// top right hand corner
+				} else if(i == 0 && j == SIZE - 1)         // top right hand corner
+				{
 					grid[i][j] = (char) 187;
-				else if(i == SIZE - 1 && j == 0) 		// bottom left hand corner
+				} else if(i == SIZE - 1 && j == 0)         // bottom left hand corner
+				{
 					grid[i][j] = (char) 200;
-				else if(i == SIZE - 1 && j == SIZE - 1) // bottom right hand cornter
+				} else if(i == SIZE - 1 && j == SIZE - 1) // bottom right hand cornter
+				{
 					grid[i][j] = (char) 188;
+				}
 			}
 		}
 	}
@@ -48,7 +55,6 @@ public class GameOfLife {
 		if(number == 0) {
 			char[] options = {'\0', 'n', 'y'};
 			char input;
-
 			do {
 				IO.println("Haben Sie " + number + " eingetippt? y/n");
 				input = IO.readChar();
@@ -61,10 +67,10 @@ public class GameOfLife {
 	char getOptionInput() { // checks if the user doesn't know what to do in the small menu
 		boolean second = false;
 		char input;
-
 		do {
-			if(second)
+			if(second) {
 				IO.println(HELP);
+			}
 			input = IO.readChar();
 			second = true;
 		} while(!isCorrectOption(input));
@@ -73,7 +79,6 @@ public class GameOfLife {
 
 	private int askForNumber() { // Gets a number of the user
 		int number;
-
 		do {
 			number = IO.readInt();
 		} while(!isNumber(number));
@@ -82,7 +87,6 @@ public class GameOfLife {
 
 	int askForCoordinate(char coordinateChar) { // Asks the user for a coordinate
 		int coordinate;
-
 		do {
 			IO.nlprint("Bitte geben Sie die " + coordinateChar + "-Koordinate ein:");
 			coordinate = askForNumber();
@@ -93,7 +97,7 @@ public class GameOfLife {
 	void showGrid() { // print the array on on the screen
 		String world = "";
 		for(char[] g : grid) {
-			for(char c: g) {
+			for(char c : g) {
 				world += c;
 			}
 			world += '\n';
@@ -115,11 +119,11 @@ public class GameOfLife {
 
 	boolean isAlive(int y, int x) { // Returns a boolean if the Cell has to be alive or dead.
 		int nighbour = 0;
-
 		for(int i = -1; i < 2; i++) {
 			for(int j = -1; j < 2; j++) {
-				if(!(j == 0 && i==0) && grid[y + i][x + j] == ALIVE)
+				if(!(j == 0 && i == 0) && grid[y + i][x + j] == ALIVE) {
 					nighbour++;
+				}
 			}
 		}
 		return (nighbour == 2 && grid[y][x] == ALIVE || nighbour == 3);
@@ -127,15 +131,15 @@ public class GameOfLife {
 
 	void nextCycle() { // Runs through the array and checks every cell to be alive or dead
 		char[][] copy = new char[SIZE][SIZE];
-
 		for(int i = 0; i < SIZE; i++) {
 			for(int j = 0; j < SIZE; j++) {
-				if(i == 0 || j == 0 || i == SIZE - 1 || j == SIZE - 1)
+				if(i == 0 || j == 0 || i == SIZE - 1 || j == SIZE - 1) {
 					copy[i][j] = grid[i][j];
-				else if(isAlive(i, j))
+				} else if(isAlive(i, j)) {
 					copy[i][j] = ALIVE;
-				else
+				} else {
 					copy[i][j] = DEAD;
+				}
 			}
 		}
 		grid = copy;
@@ -155,7 +159,6 @@ public class GameOfLife {
 
 	void jumpCycle() { // Asks how many cycels should be done 'at once'
 		int input;
-
 		do {
 			IO.println("Wie viele Cyklen wollen sie ueberspringen?");
 			input = IO.readInt();
@@ -166,25 +169,28 @@ public class GameOfLife {
 	public static void main(String[] args) {
 		GameOfLife gol = new GameOfLife();
 		char input = '\0';
-
 		IO.println(gol.OPTIONS + "\n\nWeiter mit Enter!");
 		IO.readChar();
-
 		do {
 			switch(input) {
-				case '\0': gol.nextCycle();
+				case '\0':
+					gol.nextCycle();
 					break;
-				case 't': gol.jumpCycle();
+				case 't':
+					gol.jumpCycle();
 					break;
-				case 'a': gol.addCell();
+				case 'a':
+					gol.addCell();
 					break;
-				case 'r': gol.deleteCell();
+				case 'r':
+					gol.deleteCell();
 					break;
-				case 'h': IO.println(gol.OPTIONS);
+				case 'h':
+					IO.println(gol.OPTIONS);
 			}
-			if(input != 'h')
+			if(input != 'h') {
 				gol.showGrid();
-
+			}
 			IO.println("Was wollen Sie tun?");
 			input = gol.getOptionInput();
 		} while(input != 'e');
