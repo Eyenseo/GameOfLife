@@ -37,6 +37,10 @@ public class GameOfLife {
 			}
 		}
 	}
+	
+	void some(){
+		system.out.println("kno");
+	}
 
 	void test(boolean at) {
 		if(at) {
