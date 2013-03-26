@@ -2,8 +2,8 @@ package original;
 
 public class GameOfLife {
 	private final char[]   CHOICES = {'\0', 'e', 'a', 'r', 'h', 't'}; // Available options in the Main menu
-	private final char     ALIVE   = (char) 254; // Char for a Cell that's alive
-	private final char     DEAD    = ' '; // Char for a Cell that's dead
+	private final char     ALIVE   = (char) 254; // Char for a Cell that's alive              jklöjkö
+	private final char     DEAD    = ' '; // Char for a Cell that's dead    jhhjl
 	private final int      SIZE    = 65; // Size of the quadratic world/grid
 	private final String   OPTIONS = "\nIhre Optionen:\n" // Text of the main menu
 	                                 + "Enter\tNaechter Zueklus\n" + "t\tZyklen vor springen\n"
