@@ -42,6 +42,7 @@ public class GameOfLife {
 	//second test
 	// third test
 
+
 	public static void main(String[] args) {
 		GameOfLife gol = new GameOfLife();
 		char input = '\0';
