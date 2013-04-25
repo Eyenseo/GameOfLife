@@ -38,8 +38,7 @@ public class GameOfLife {
 		}
 	}
 
-	/// Temp             test for branch
-	// Second push
+	//no no
 
 	public static void main(String[] args) {
 		GameOfLife gol = new GameOfLife();
