@@ -38,6 +38,8 @@ public class GameOfLife {
 		}
 	}
 
+	/// Temp             test for branch
+
 	public static void main(String[] args) {
 		GameOfLife gol = new GameOfLife();
 		char input = '\0';
